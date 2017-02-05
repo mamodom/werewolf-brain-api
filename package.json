@@ -9,6 +9,7 @@
   "author": "mamodom",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "werewolf-brain": "^1.2.1"
   }
 }
