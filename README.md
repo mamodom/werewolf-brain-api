@@ -1,4 +1,4 @@
-# werewolf-brain-api
+# Werewolf-brain-api
 [wistcc/werewolf-brain](https://github.com/wistcc/werewolf-brain) as a service
 
 ```
