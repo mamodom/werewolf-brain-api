@@ -42,9 +42,9 @@ Get    /game
                 language (default null)
                 chaos (default false)
 
-Get     /languagePacks/
-            returns a list of available language packs
+Get     /languages/
+            returns a list of available languages.
 
-Get     /languangePacks/{language_pack_key}
-            return localization file for `language_pack_key`
+Get     /languages/{language_key}
+            return localization file for `language_key`
 ```

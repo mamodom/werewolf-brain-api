@@ -15,16 +15,24 @@ app.get('/cards/:card_key', function(req, res) {
     res.send(brain
         .getAllCards()
         .filter(function(value, index, array) {
-            return value === req.param.card_key;
+            return value === req.params.card_key;
         })[0]);
 });
 
 app.get('/decks', function(req, res) {
     res.send(brain.getAllDecks());
-});
+}); 
 
 app.get('/decks/:deck_key', function(req, res) {
-    res.send(brain.getAllDecks()[req.param.deck_key]);
+    res.send(brain.getAllDecks()[req.params.deck_key]);
+});
+
+app.get('/languages', function(req, res) {
+    res.send(brain.getAvailableLanguages());
+});
+
+app.get('/languages/:language_key', function(req, res) {
+    res.send(brain.getLanguage(req.params.language_key));
 });
 
 app.listen(3000, function () {
