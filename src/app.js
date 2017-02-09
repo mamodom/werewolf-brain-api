@@ -35,6 +35,8 @@ app.get('/languages/:language_key', function(req, res) {
     res.send(brain.getLanguage(req.params.language_key));
 });
 
-app.listen(3000, function () {
-  console.log('Listening on port 3000!')
+const port = process.env.PORT || 8080;
+
+app.listen(port, function () {
+  console.log(`Listening on port ${port}`);
 });
