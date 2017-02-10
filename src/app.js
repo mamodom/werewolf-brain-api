@@ -1,10 +1,6 @@
 var express = require('express');
 var brain = require('werewolf-brain');
 
-var game = brain.getBalancedGame(5);
-var script = brain.getScriptFromDeck(game.deck);
-
-
 var app = express();
 
 app.get('/cards', function(req, res) {
@@ -32,9 +28,27 @@ app.get('/languages', function(req, res) {
 });
 
 app.get('/languages/:language_key', function(req, res) {
-    res.send(brain.getLanguage(req.params.language_key));
+    res.send(brain.getTranslation(req.params.language_key));
 });
 
+app.get('/game', function(req, res) {
+    
+    const players = req.query.players;
+    const cardsToInclude = JSON.parse(req.query.cardsToInclude || []);
+    const scriptScope = req.query.scriptScope || 'deck';
+    const chaos = req.query.chaos || false;
+
+    var game = null;
+    if(chaos) {
+        game = brain.getChaosGame(players, cardsToInclude);
+    } else {
+        game = brain.getBalancedGame(players, cardsToInclude);
+    }
+
+     game.script = brain.getScriptFromDeck(game.game);
+    
+    res.send(game);
+});
 const port = process.env.PORT || 8080;
 
 app.listen(port, function () {
